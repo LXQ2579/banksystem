@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="layui/css/layui.css" rel="stylesheet">
+
+</head>
+
+
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo" style="width: auto;">欢迎使用个人网上银行</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    <span></span>
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="user/quit.do" onclick="return confirm('是否确认退出')">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="balance.html" target="myframe">查询余额</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="transfer.html" target="myframe">转账</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="transferinfo.html" target="myframe">交易记录</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="changePassword.html" target="myframe">修改密码</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <iframe name="myframe" height="100%" width="100%"></iframe>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © layui.com - 底部固定区域
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.12.2.min.js"></script>
+<script src="layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+
+    $(function () {
+
+        $.ajax({
+            type: "post",
+            url: "/user/getLoginName.do",
+            dataType: "json",
+            success: function (data) {
+                $("span").html(data.info.username)
+            }
+        })
+
+    })
+</script>
+
+</body>
+
+
+<!--<body>-->
+
+<!--<div class="header">-->
+<!--    卡号: <span></span>-->
+<!--    <a href="user/quit.do" onclick="return confirm('是否确认退出')">退出登陆</a>-->
+<!--</div>-->
+
+<!--<center><h1>欢迎使用个人网上银行</h1></center>-->
+<!--<div style="width: auto">-->
+<!--    <div class="content">-->
+<!--        <a href="balance.html" target="myframe">查询余额</a><br/>-->
+<!--        <a href="transfer.html" target="myframe">转账</a><br/>-->
+<!--        <a href="transferinfo.html" target="myframe">交易记录</a><br/>-->
+<!--        <a href="changePassword.html" target="myframe">修改密码</a><br/>-->
+<!--    </div>-->
+<!--    <center>-->
+<!--        <div class="content">-->
+
+<!--            <iframe name="myframe" width="900px" height="500px">-->
+
+<!--            </iframe>-->
+
+<!--        </div>-->
+<!--    </center>-->
+<!--</div>-->
+
+
+<!--</body>-->
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h2>个人网上银行</h2>
+
+    <form action="#" method="post">
+        卡号:<input type="text" name="cardId"><br>
+        密码:<input type="password" name="password"><br>
+        <input type="submit" value="登陆">
+    </form>
+</center>
+
+
+<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+
+    $("form").submit(function () {
+        $.ajax({
+            type: "post",
+            url: "user/login.do",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function (data) {
+                if (data.code == 0) {
+                     alert("登录成功");
+                    window.location.href = "index.html";
+                } else {
+                    alert(data.info);
+                }
+            }
+        });
+        return false;
+    })
+</script>
+
+
+</body>
+</html>

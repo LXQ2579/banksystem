@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxq.mapper.UserMapper">
+
+    <select id="findByCardId" parameterType="string" resultType="com.lxq.pojo.User">
+        select * from user where cardId = #{cardId}
+    </select>
+
+    <update id="updatePassword" parameterType="map">
+        update user set password = #{password} where cardId = #{cardId}
+    </update>
+
+    <update id="updateBalance" parameterType="com.lxq.pojo.User">
+        update user set balance = #{balance} where cardId = #{cardId}
+    </update>
+    <!--    <select id="checkPassword" parameterType="com.ebank.pojo.User" resultType="com.ebank.pojo.User">-->
+    <!--        select cardId from user where cardId = #{cardId} and password = #{password}-->
+    <!--    </select>-->
+
+
+</mapper>
